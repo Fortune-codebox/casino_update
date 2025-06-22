@@ -45,9 +45,9 @@ A full-featured casino gaming application built using **Node.js/Express** for th
 - Login Access Requires 2 Steps
 
 1. Connect Wallet
-2. Input User and Password
+2. Input User and Password After a Successful Wallet Connection
 
-## Login Access After Successful Connecting Wallet
+## Test Login Access Input Data After Successful Connecting Wallet.
 
 user: aaron1
 pass: 12345@
