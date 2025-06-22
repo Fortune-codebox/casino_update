@@ -3,15 +3,15 @@ import { translate } from '../../translations/translate'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import { useAccount, useConnect, useEnsName } from 'wagmi'
+import { useAccount } from 'wagmi'
 import WalletOptions from '../walletoptions/walletoptions'
+
 
 function SignIn(props) {
     const {lang} = props
     const [user, setUser] = useState('')
     const [pass, setPass] = useState('')
     const [visible, setVisible] = useState(false)
-    const { connectors, connect } = useConnect()
 
     const { address, isConnected } = useAccount()
 
@@ -29,9 +29,16 @@ function SignIn(props) {
 
     function handleSubmit(e){
         e.preventDefault()
-        if(typeof props.signSubmit === "function"){
-            props.signSubmit({emit: 'signin_send', payload: {user, pass}})
+        //This is to properly make sure that no matter what happens a user must connect their wallet before signin works
+        //Without this one can easily manipulate the frontend by removing disabled from the input and login button.
+
+        if(isConnected) {
+            if(typeof props.signSubmit === "function"){
+                props.signSubmit({emit: 'signin_send', payload: {user, pass}})
+            }
+
         }
+
     }
 
     function handleVisible(){
@@ -39,7 +46,8 @@ function SignIn(props) {
     }
 
 
-    return <div className="sign_in_container">
+    return <>
+            <div className="sign_in_container">
         <Form>
             <Row>
                 <Col sm={4} className="label_container d-none d-sm-block">
@@ -69,7 +77,8 @@ function SignIn(props) {
                 </Col>
             </Row>
         </Form>
-    </div>
+            </div>
+            </>
 }
 
 export default SignIn

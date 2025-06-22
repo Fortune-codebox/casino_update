@@ -16,6 +16,9 @@ A full-featured casino gaming application built using **Node.js/Express** for th
 
 ## 📋 Project Requirements
 
+    - Run For Development: npm run dev
+    - Run For Production: npm run start
+
 ### 1. Write your opinion here
 
     - Strengths and weaknesses of UI/UX

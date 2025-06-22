@@ -12,14 +12,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import Page from "./components/pages/page"
 
-// let localUuid = getCookie('casino_uuid')
-
-// 		if(!localUuid) {
-// 			localUuid = uuidv4(
-// 				setCookie('casino_uuid', localUuid)
-// 			)
-// 		}
-
 const socket = io();
 
 const queryClient = new QueryClient()
@@ -45,21 +37,6 @@ function App() {
 
   useEffect(() => {
     my_console.disable()
-
-
-    // socket.connect();
-
-		// Log connection events
-		socket.on('connect', () => {
-			console.log('Socket connected:', socket.id);
-			socket.emit('client_connected', { clientId: socket.id });
-		});
-
-		socket.on('disconnect', () => {
-			console.log('Socket disconnected');
-		});
-
-
     // Emit heartbeat every 15s ONLY after connected
     const interval = setInterval(() => {
       if (socket.connected) {
@@ -70,13 +47,13 @@ function App() {
 
     return () => {
       clearInterval(interval);
-			socket.off('connect');    // Remove event listeners
-    	socket.off('disconnect');
       socket.disconnect();
     };
   }, []);
 
   return (
+    // Need to wrap our React App with Context so that our application is
+    // aware of Wagmi & React Query's reactive state and in-memory caching.
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
       <Page socket={socket} />

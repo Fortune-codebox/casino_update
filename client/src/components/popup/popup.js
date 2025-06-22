@@ -35,7 +35,7 @@ function Popup(props){
     let size = useSelector(state => state.popup.size)
     let sticky = useSelector(state => state.popup.sticky)
 
-    let dispatch = useDispatch()    
+    let dispatch = useDispatch()
 
     const [forgotPasswordResult, setForgotPasswordResult] = useState('')
     const [forgotPasswordSending, setForgotPasswordSending] = useState(false)
@@ -72,7 +72,7 @@ function Popup(props){
             socket.emit('dashboardChanges_send', e)
             switch(e.type){
                 case "user":
-                    dispatch(changeUser({user: e.value}))                    
+                    dispatch(changeUser({user: e.value}))
                     break
                 default:
                     break
@@ -96,7 +96,7 @@ function Popup(props){
     }, [socket])
 
     return <>
-        {template !== "welcome" ? <Modal id="myModal" className={"mymodal " + style} show={open} onHide={closeModal} size={size} centered> 
+        {template !== "welcome" ? <Modal id="myModal" className={"mymodal " + style} show={open} onHide={closeModal} size={size} centered>
             {title !== "" ? <Modal.Header>
                 {!sticky ? <div className="closeButton closeButtonHeader" onClick={closeModal}>
                     <span>X</span>
@@ -107,13 +107,13 @@ function Popup(props){
                 {title === "" && !sticky ? <div className="closeButton" onClick={closeModal}>
                     <span>X</span>
                 </div> : null}
-                {(() => {					
+                {(() => {
                     switch (template) {
                         case "forgotPassword":
-                            return <ForgotPassword 
-                                lang={lang} 
-                                text={data} 
-                                forgotPasswordClick={(e)=>forgotPasswordClick(e)} 
+                            return <ForgotPassword
+                                lang={lang}
+                                text={data}
+                                forgotPasswordClick={(e)=>forgotPasswordClick(e)}
                                 forgotPasswordResult={forgotPasswordResult}
                                 forgotPasswordSending={forgotPasswordSending}
                             />
@@ -148,7 +148,7 @@ function Popup(props){
                 })()}
             </Modal.Body>
             {(template === "game_results" && data.status === "win") || (template === "streak" && data > 0) ? <div className="firework"></div> : null}
-        </Modal> : <Modal id="myModal_gift" className={"mymodal " + template} show={open} onHide={closeModal} size={size} centered> 
+        </Modal> : <Modal id="myModal_gift" className={"mymodal " + template} show={open} onHide={closeModal} size={size} centered>
             <Modal.Body>
                 <Welcome settings={settings} />
             </Modal.Body>
