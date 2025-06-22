@@ -7,7 +7,6 @@ const { Client } = require("pg");
 /// Replaced the Promise[reject, resolve] with ES6 async/await
 module.exports = async function database(database_config) {
 
-  console.log('DB_URI: ', database_config.URI)
 	let client = new Client(database_config.URI);
 
 	await client.connect();
