@@ -4,9 +4,9 @@ const cryptoPayment = express.Router()
 const jsonParser = bodyParser.json()
 const axios = require('axios')
 
-const {API_KEY} = require('/var/constants')
-const apiKey = "Z1KG9J0-GNHMNQE-PT6HD64-ET6GTWK"
-const apiUrl = 'https://api.nowpayments.io/v1'
+const {API_KEY, API_URL} = require('../var/constants')
+const apiKey = API_KEY
+const apiUrl = API_URL
 const BASE_URL = process.env.BASE_URL
 
 cryptoPayment.post("/api/crypto", jsonParser, (req, res, next) => {

@@ -2,7 +2,7 @@ var express = require("express")
 var bodyParser = require('body-parser')
 var stripePayment = express.Router()
 
-const constants = require('./var/constants')
+const constants = require('../var/constants')
 var jsonParser = bodyParser.json()
 const stripe = require('stripe')(constants.STRIPE_URI)
 const MINIMUM_AMOUNT_USD = 1000

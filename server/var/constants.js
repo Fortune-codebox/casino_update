@@ -25,5 +25,6 @@ module.exports = Object.freeze({
 
     },
     API_KEY: "Z1KG9J0-GNHMNQE-PT6HD64-ET6GTWK",
+    API_URL: 'https://api.nowpayments.io/v1',
     STRIPE_URI: "sk_test_51Mdvu1CWq9uV6YuM2iH4wZdBXlSMfexDymB6hHwpmH3J9Dm7owHNBhq4l4wawzFV9dXL3xrYGbhO74oc8OeQn5uJ00It2XDg9U"
 })
