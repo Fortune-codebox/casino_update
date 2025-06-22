@@ -17,7 +17,7 @@ A full-featured casino gaming application built using **Node.js/Express** for th
 ## 📋 Project Requirements
 
     - After successful cloning the project with: git clone https://github.com/Fortune-codebox/casino_update.git
-    - install dependencies
+    - install dependencies - npm install
     - Run For Development: npm run dev
     - Run For Production: npm run start
 
